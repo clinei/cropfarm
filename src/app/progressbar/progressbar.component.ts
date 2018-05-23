@@ -10,6 +10,8 @@ import { Progressor } from '../progressor';
 export class ProgressbarComponent implements OnInit, OnChanges {
   @Input() curr: number;
   @Input() target: number;
+  @Input() color: string = 'rgb(140, 200, 140)';
+  @Input() background: string = 'rgb(230, 230, 230)';
   right: number;
   shouldStop: boolean = false;
 

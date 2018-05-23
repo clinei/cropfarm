@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Progressor } from '../progressor';
+import { CropData } from '../crop.data';
 
 @Component({
   selector: 'app-crop-item',
@@ -8,8 +9,7 @@ import { Progressor } from '../progressor';
   styleUrls: ['./crop-item.component.css']
 })
 export class CropItemComponent implements OnInit {
-  @Input() imageURL: string;
-  @Input() progressor: Progressor;
+  @Input() data: CropData;
 
   constructor() { }
 

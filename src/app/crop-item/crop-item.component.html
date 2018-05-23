@@ -1,5 +1,7 @@
 <div class='wrapper'>
-  <img [src]='imageURL' />
-  <app-progressbar [curr]='progressor.curr' [target]='progressor.target'></app-progressbar>
-  <!-- <app-button></app-button> -->
+  <div class='badge'>
+    <img [src]='data.imageURL' height=40 width=40 />
+  </div>
+  <app-progressbar [curr]='data.progressor.curr' [target]='data.progressor.target'></app-progressbar>
+  <app-button text='buy' [price]='data.upgradePrice' [onClick]='data.upgrade.bind(data)'></app-button>
 </div>
