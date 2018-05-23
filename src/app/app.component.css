@@ -1,0 +1,16 @@
+.layout-v {
+  display: flex;
+  flex-direction: column;
+}
+.layout-h {
+  display: flex;
+  flex-direction: row;
+}
+
+.layout-h > *, .layout-v > * {
+  margin: 20px;
+}
+
+.side-right {
+  width: 400px;
+}

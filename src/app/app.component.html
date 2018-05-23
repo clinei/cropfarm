@@ -1,0 +1,13 @@
+<div class='main'>
+  <div class='layout-h'>
+    <div class='layout-v side-left'>
+      <div class='cropfield'></div>
+      <div class='credits'></div>
+    </div>
+    <div class='layout-v side-right'>
+      <div *ngFor='let crop of controller.data'>
+        <app-crop-item [imageURL]='crop.imageURL' [progressor]='crop.progressor'></app-crop-item>
+      </div>
+    </div>
+  </div>
+</div>
