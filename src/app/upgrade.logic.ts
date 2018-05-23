@@ -6,13 +6,13 @@ export class UpgradeLogic {
 
   constructor(
     basePrice: number,
-    scaleFactor: number,
+    scaleFactor: number = 0.1,
   ) {
     this.basePrice = basePrice;
     this.scaleFactor = scaleFactor;
   }
 
   upgradeTo(level): number {
-    return Math.pow(this.basePrice, 1 + level * this.scaleFactor);
+    return Math.round(Math.pow(this.basePrice, 1 + level * this.scaleFactor) * 100) / 100;
   }
 }

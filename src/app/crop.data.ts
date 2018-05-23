@@ -1,6 +1,7 @@
 import { UpgradeLogic } from './upgrade.logic';
 import { Progressor } from './progressor';
 import { Controller } from './controller';
+import { WorthLogic } from './worth.logic';
 
 export class CropData {
   name: string;
@@ -8,6 +9,7 @@ export class CropData {
   baseWorth: number;
   imageURL: string;
   upgradeLogic: UpgradeLogic;
+  worthLogic: WorthLogic;
   progressor: Progressor;
   upgradePrice: number;
   controller: Controller;
@@ -18,6 +20,7 @@ export class CropData {
     baseWorth: number,
     imageURL: string,
     upgradeLogic: UpgradeLogic,
+    worthLogic: WorthLogic,
     progressor: Progressor,
     controller: Controller,
   ) {
@@ -26,6 +29,7 @@ export class CropData {
     this.baseWorth = baseWorth;
     this.imageURL = imageURL;
     this.upgradeLogic = upgradeLogic;
+    this.worthLogic = worthLogic;
     this.progressor = progressor;
     this.controller = controller;
 
@@ -39,5 +43,9 @@ export class CropData {
       this.upgradePrice = this.upgradeLogic.upgradeTo(this.level);
     }
     catch (e) {}
+  }
+
+  get worth() {
+    return this.worthLogic.getWorth(this.baseWorth, this.level);
   }
 }

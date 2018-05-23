@@ -5,7 +5,7 @@
       <div class='credits'></div>
     </div>
     <div class='layout-v side-right'>
-      <div>{{controller.funds.amount}}</div>
+      <div>{{ controller.funds.amount | number:'1.2-2' }}</div>
       <div *ngFor='let crop of controller.data'>
         <app-crop-item [data]='crop'></app-crop-item>
       </div>
