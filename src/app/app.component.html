@@ -5,6 +5,7 @@
       <div class='credits'></div>
     </div>
     <div class='layout-v side-right'>
+      <div>{{controller.funds.amount}}</div>
       <div *ngFor='let crop of controller.data'>
         <app-crop-item [imageURL]='crop.imageURL' [progressor]='crop.progressor'></app-crop-item>
       </div>

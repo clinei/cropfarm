@@ -1,21 +1,25 @@
 export class Stock {
-  private amount: number;
+  private _amount: number;
 
   constructor(
-    startingAmount: number
+    startingAmount: number = 0
   ) {
-    this.amount = startingAmount;
+    this._amount = startingAmount;
   }
 
   deposit(amount: number) {
     // potential overflow
-    this.amount += amount;
+    this._amount += amount;
   }
 
   withdraw(amount: number) {
-    if (this.amount >= amount) {
-      this.amount -= amount;
+    if (this._amount >= amount) {
+      this._amount -= amount;
     }
     else throw new Error('Not enough stock')
+  }
+
+  get amount() {
+    return this._amount;
   }
 }

@@ -6,13 +6,13 @@ import { UpgradeLogic } from './upgrade.logic';
 import { Progressor } from './progressor';
 
 export class Controller {
-  funds: Stock;
+  funds: Stock = new Stock();
   data: CropData[] = [
-    new CropData('Potato', 'potatoImage', new UpgradeLogic(this, 2, 1), new Progressor(0, 2, 1)),
-    new CropData('Corn', 'cornImage', new UpgradeLogic(this, 2, 1), new Progressor(0, 4, 1)),
-    new CropData('Wheat', 'WheatImage', new UpgradeLogic(this, 2, 1), new Progressor(0, 8, 1)),
-    new CropData('Tomato', 'tomatoImage', new UpgradeLogic(this, 2, 1), new Progressor(0, 16, 1)),
-    new CropData('Tulip', 'tulipImage', new UpgradeLogic(this, 2, 1), new Progressor(0, 32, 1)),
+    new CropData('Potato', 2,  'potatoImage', new UpgradeLogic(this, 2, 1), new Progressor(0,  2, 1)),
+    new CropData('Corn',   4,  'cornImage',   new UpgradeLogic(this, 2, 1), new Progressor(0,  4, 1)),
+    new CropData('Wheat',  8,  'WheatImage',  new UpgradeLogic(this, 2, 1), new Progressor(0,  8, 1)),
+    new CropData('Tomato', 16, 'tomatoImage', new UpgradeLogic(this, 2, 1), new Progressor(0, 16, 1)),
+    new CropData('Tulip',  32, 'tulipImage',  new UpgradeLogic(this, 2, 1), new Progressor(0, 32, 1)),
   ];
 
   private prevTime: number;
@@ -42,7 +42,10 @@ export class Controller {
     this.prevTime = currTime;
 
     for (let data of this.data) {
-      data.progressor.update(deltaTime);
+      const doneAmount = data.progressor.update(deltaTime);
+      if (doneAmount) {
+        this.funds.deposit(data.baseWorth * doneAmount);
+      }
     }
   }
 }
