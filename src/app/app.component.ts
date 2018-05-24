@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Controller } from './controller';
+import { PlayerService } from './player.service';
+import { UpdateService } from './update.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,12 @@ import { Controller } from './controller';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  controller: Controller;
+
+  constructor(
+    private playerService: PlayerService,
+    private updateService: UpdateService,
+  ) {}
 
   ngOnInit() {
-    this.controller = new Controller(Date.now());
   }
 }

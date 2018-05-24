@@ -1,5 +1,3 @@
-import { Controller } from './controller';
-
 export class UpgradeLogic {
   private basePrice: number;
   private scaleFactor: number;

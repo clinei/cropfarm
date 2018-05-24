@@ -1,7 +1,7 @@
 import { UpgradeLogic } from './upgrade.logic';
 import { Progressor } from './progressor';
-import { Controller } from './controller';
 import { WorthLogic } from './worth.logic';
+import { PlayerService } from './player.service';
 
 export class CropData {
   name: string;
@@ -12,7 +12,6 @@ export class CropData {
   worthLogic: WorthLogic;
   progressor: Progressor;
   upgradePrice: number;
-  controller: Controller;
 
   constructor(
     name: string,
@@ -22,7 +21,7 @@ export class CropData {
     upgradeLogic: UpgradeLogic,
     worthLogic: WorthLogic,
     progressor: Progressor,
-    controller: Controller,
+    private playerService: PlayerService,
   ) {
     this.name = name;
     this.level = level;
@@ -31,14 +30,13 @@ export class CropData {
     this.upgradeLogic = upgradeLogic;
     this.worthLogic = worthLogic;
     this.progressor = progressor;
-    this.controller = controller;
 
     this.upgradePrice = this.upgradeLogic.upgradeTo(this.level);
   }
 
   upgrade() {
     try {
-      this.controller.funds.withdraw(this.upgradePrice);
+      this.playerService.funds.withdraw(this.upgradePrice);
       this.level += 1;
       this.upgradePrice = this.upgradeLogic.upgradeTo(this.level);
     }
