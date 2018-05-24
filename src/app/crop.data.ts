@@ -34,6 +34,15 @@ export class CropData {
     this.upgradePrice = this.upgradeLogic.upgradeTo(this.level);
   }
 
+  update(deltaTime: number) {
+    if (this.level) {
+      const doneAmount = this.progressor.update(deltaTime, this.level);
+      if (doneAmount) {
+        this.playerService.funds.deposit(this.worth * doneAmount);
+      }
+    }
+  }
+
   upgrade() {
     try {
       this.playerService.funds.withdraw(this.upgradePrice);

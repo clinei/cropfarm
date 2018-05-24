@@ -11,6 +11,6 @@ export class UpgradeLogic {
   }
 
   upgradeTo(level): number {
-    return Math.round(Math.pow(this.basePrice, 1 + level * this.scaleFactor) * 100) / 100;
+    return Math.round(this.basePrice * (1 + level * this.scaleFactor) * 100) / 100;
   }
 }

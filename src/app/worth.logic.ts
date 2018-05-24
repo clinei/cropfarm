@@ -8,6 +8,7 @@ export class WorthLogic {
   }
 
   getWorth(baseWorth, level) {
-    return Math.round(Math.pow(baseWorth, 1 + level * this.scaleFactor / 2) * 100) / 100;
+    // return Math.round(Math.pow(baseWorth, 1 + level * this.scaleFactor / 2) * 100) / 100;
+    return baseWorth;
   }
 }

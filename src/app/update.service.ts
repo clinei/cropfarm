@@ -33,12 +33,7 @@ export class UpdateService {
     this.prevTime = currTime;
 
     for (let data of this.playerService.data) {
-      if (data.level) {
-        const doneAmount = data.progressor.update(deltaTime);
-        if (doneAmount) {
-          this.playerService.funds.deposit(data.worth * doneAmount);
-        }
-      }
+      data.update(deltaTime);
     }
   }
 }
