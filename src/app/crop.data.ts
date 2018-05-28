@@ -2,6 +2,7 @@ import { UpgradeLogic } from './upgrade.logic';
 import { Progressor } from './progressor';
 import { WorthLogic } from './worth.logic';
 import { PlayerService } from './player.service';
+import { FieldService } from './field.service';
 
 export class CropData {
   name: string;
@@ -22,6 +23,7 @@ export class CropData {
     worthLogic: WorthLogic,
     progressor: Progressor,
     private playerService: PlayerService,
+    private fieldService: FieldService,
   ) {
     this.name = name;
     this.level = level;
@@ -46,8 +48,19 @@ export class CropData {
   upgrade() {
     try {
       this.playerService.funds.withdraw(this.upgradePrice);
-      this.level += 1;
-      this.upgradePrice = this.upgradeLogic.upgradeTo(this.level);
+      try {
+        try {
+        this.fieldService.add(this.imageURL);
+        }
+        catch (e) {
+          console.log(e);
+        }
+        this.level += 1;
+        this.upgradePrice = this.upgradeLogic.upgradeTo(this.level);
+      }
+      catch (e) {
+        this.playerService.funds.deposit(this.upgradePrice);
+      }
     }
     catch (e) {}
   }

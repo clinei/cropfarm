@@ -1,0 +1,29 @@
+.row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  background-color: rgb(80, 160, 80);
+  border-radius: 4px;
+}
+
+.next {
+  position: absolute;
+
+  background-color: rgb(255, 0, 0);
+  opacity: 0.2;
+}
+
+.column {
+  height: 600px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}

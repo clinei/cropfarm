@@ -1,3 +1,8 @@
-<p>
-  cropfield works!
-</p>
+<div class='row' [ngStyle]='{ "width": sizeStr, "height": sizeStr }'>
+  <div class='next' [ngStyle]='{ "left": nextPosStr, "width": cropSizeStr, "height": cropSizeStr }'></div>
+  <div class='column' *ngFor='let column of fieldService.columns' [ngStyle]='{ "width": cropSizeStr }'>
+    <div class='crop' *ngFor='let crop of column' [ngStyle]='{ "width": cropSizeStr, "height": cropSizeStr }'>
+      <img [src]='crop' />
+    </div>
+  </div>
+</div>

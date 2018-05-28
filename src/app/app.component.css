@@ -7,12 +7,18 @@
   flex-direction: row;
 }
 
-.layout-h > *, .layout-v > * {
+.layout-h, .layout-v {
   margin: 20px;
+}
+
+.side-left {
+  width: 600px;
+  height: 600px;
 }
 
 .side-right {
   width: 400px;
+  height: 600px;
 
   background-color: rgb(255, 255, 255);
 }
