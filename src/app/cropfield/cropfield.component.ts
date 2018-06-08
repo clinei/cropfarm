@@ -14,7 +14,7 @@ export class CropfieldComponent implements OnInit {
   nextPosStr: string;
 
   constructor(
-    private fieldService: FieldService,
+    public fieldService: FieldService,
   ) {
     this.sizeStr = `${this.size}px`;
     this.cropSize = 600 / fieldService.size;

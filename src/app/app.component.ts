@@ -10,7 +10,7 @@ import { UpdateService } from './update.service';
 export class AppComponent implements OnInit {
 
   constructor(
-    private playerService: PlayerService,
+    public playerService: PlayerService,
     private updateService: UpdateService,
   ) {}
 
